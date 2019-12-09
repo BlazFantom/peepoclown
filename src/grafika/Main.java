@@ -6,10 +6,6 @@
 package grafika;
 
 import Controller.Controller;
-import MyShape.*;
-import java.awt.Color;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
 
 /**
  *
@@ -18,6 +14,6 @@ import java.awt.geom.Rectangle2D;
 public class Main {
     public static void main(String [] s){
         
-       new Controller(new MyShape(new Rectangle2D.Double(),new NoFilling(), Color.RED));
+        Controller controller = new Controller();
     }
 }

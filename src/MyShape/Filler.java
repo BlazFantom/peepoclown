@@ -7,9 +7,10 @@ package MyShape;
 
 import java.awt.Graphics2D;
 import java.awt.geom.RectangularShape;
+import java.io.Serializable;
 
-interface Filler{
+public interface Filler extends Serializable{
     void Filling(Graphics2D g2, MyShape current);
-
+  
     public Filler clone();
 }

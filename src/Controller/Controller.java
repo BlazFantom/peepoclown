@@ -5,48 +5,41 @@
  */
 package Controller;
 
-import Activity.Activity;
-import Activity.DrawActivity;
-import MyShape.MyShape;
 import grafika.Model.Model;
 import grafika.MyFrame;
 import grafika.MyPanel;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
+import undoMachine.UndoMachine;
 
-
-/**
- *
- * @author Netbeans
- */
 public class Controller {
-    MyShape shape;
+   
     MyPanel panel;
     MyFrame frame;
     Model model;
-    Activity activity;
-    public Controller(MyShape shape) {
-        this.shape = shape;
+    State state;
+    UndoMachine undoMichine;
+    public Controller() {
+        undoMichine = new UndoMachine();
         panel = new MyPanel(this);
-        model = new Model(shape);
+        model = new Model();
         model.addObserver(panel);
-        frame = new MyFrame(panel);
-        activity = new DrawActivity();
-        activity.setModel(model);
+        state = new State(model);
+        frame = new MyFrame(panel, state, undoMichine);
+       
     }
-
-   
-
+    
     public void draw(Graphics2D g2) {
         model.draw(g2);
     }
 
     public void pressed(Point2D point2D) {
-        activity.executePress(point2D);
+        state.getActivity().executePress(point2D);
+        undoMichine.add(state.getActivity().clone());
     }
 
     public void dragged(Point2D point2D) {
-        activity.executeDrag(point2D);
+         state.getActivity().executeDrag(point2D);
     }
     
     

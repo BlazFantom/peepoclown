@@ -23,7 +23,5 @@ public class Filling implements Filler{
     @Override
     public Filler clone() {
         return new Filling();
-    }
-
-    
+    }   
 }

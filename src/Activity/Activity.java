@@ -15,6 +15,9 @@ import java.awt.geom.Point2D;
 public interface Activity{
     void executePress(Point2D p);
     void executeDrag(Point2D p);
-    public void setModel(Model model);   
+    public void setModel(Model model);
+    public void execute();
+    public void unexecute();
+    Activity clone();
 }
 

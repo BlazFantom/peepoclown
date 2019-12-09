@@ -9,13 +9,14 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.RectangularShape;
+import java.io.Serializable;
 import java.util.Observable;
 
 /**
  *
  * @author Netbeans
  */
-public class MyShape {
+public class MyShape implements Serializable{
     RectangularShape rd;
     Filler filler;
     Color color;
@@ -74,6 +75,16 @@ public class MyShape {
         
     }
 
-  
+    public void setShape(RectangularShape shape) {
+        rd = shape;
+    }
+
+    public RectangularShape getShape() {
+        return rd;
+    }
+    
+  public void setShapeSize(double xMin, double yMin, double xMax, double yMax) {
+      rd.setFrameFromDiagonal(xMin, yMin, xMax, yMax);
+  }
     
 }
